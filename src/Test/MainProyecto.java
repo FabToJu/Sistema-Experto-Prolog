@@ -1,0 +1,25 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Test;
+
+import MVC.Controlador;
+import MVC.Vista;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author diva_
+ */
+public class MainProyecto {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    }
+}
