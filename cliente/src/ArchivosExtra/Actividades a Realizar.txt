@@ -1,0 +1,29 @@
+
+Tareas pendientes
+Base de Conocimiento .pl
+
+ Crear el archivo con la estructura de secciones correcta
+ Agregar todos los hechos de estados, actividades, energía, idiomas y canciones
+ Crear todas las reglas de inferencia
+ Agregar regla por defecto
+ Agregar predicado obtener_playlist
+
+Modelo
+
+ Implementar cargarProlog() usando JPL para cargar el archivo .pl
+ Implementar obtenerGenero() con retractall, assertz y consulta recomienda
+ Implementar obtenerPlaylist() con allSolutions de obtener_playlist
+ Agregar método consultarHecho(tipo, valor) para la consulta simple
+
+Controlador
+
+ Agregar getters de JMenuItem en la Vista y registrar listeners del menú
+ Implementar registrarListenerTipoHecho() para mostrar/ocultar campos canción
+ Implementar registrarListenerConfirmarAgregar() con validaciones
+ Implementar registrarListenerConfirmarEliminar() con confirmación
+ Implementar registrarListenerConsultar() llamando al modelo
+ Implementar generarPlaylist() conectando modelo y vista
+
+Main
+
+ Crear Main.java con instanciación de Modelo, Vista y Controlador
