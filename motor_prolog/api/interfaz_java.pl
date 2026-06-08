@@ -1,11 +1,9 @@
 :- consult('../conocimiento/reglas_actividad.pl').
+:- consult('../conocimiento/reglas_idioma.pl').
 
 % ====================================================
-% API PARA EL CLIENTE JAVA (MÚLTIPLES ENDPOINTS)
+% API PARA EL CLIENTE JAVA 
 % ====================================================
-% Este archivo expone varios predicados de búsqueda para que 
-% el cliente Java pueda usarlos según la sección de su interfaz,
-% evitando choques de filtros y simplificando las consultas.
 
 % ----------------------------------------------------
 % ENDPOINT 1: Búsqueda rápida por Actividad
@@ -56,3 +54,34 @@ buscar_avanzado(Emocion, Actividad, Energia, Idioma, Titulo, Artista, GenerosStr
     
     cancion(ID, Titulo, Artista, Generos, _),
     atomic_list_concat(Generos, ', ', GenerosStr).
+
+% ====================================================
+% API DE ADMINISTRACIÓN (MANEJO DE ESTADO Y CRUD)
+% ====================================================
+
+% ----------------------------------------------------
+% ENDPOINT 5: Agregar una nueva canción
+% Uso: Query q = new Query("api_agregar_cancion('c_99', 'Nueva Cancion', 'Artista X', ['pop', 'dance'], 'espanol')");
+% ----------------------------------------------------
+api_agregar_cancion(ID, Titulo, Artista, Generos, Idioma) :-
+    agregar_cancion(ID, Titulo, Artista, Generos, Idioma).
+
+% ----------------------------------------------------
+% ENDPOINT 6: Eliminar una canción (Físico o Lógico)
+% Parámetro Tipo: 'fisico' o 'logico'
+% Uso: Query q = new Query("api_eliminar_cancion('c_01', logico)");
+% ----------------------------------------------------
+api_eliminar_cancion(ID, logico) :- eliminar_logica(ID).
+api_eliminar_cancion(ID, fisico) :- eliminar_fisica(ID).
+
+% ----------------------------------------------------
+% ENDPOINT 7: Restaurar canción (Quitar borrado lógico)
+% Uso: Query q = new Query("api_restaurar_cancion('c_01')");
+% ----------------------------------------------------
+api_restaurar_cancion(ID) :- restaurar_logica(ID).
+
+% ----------------------------------------------------
+% ENDPOINT 8: Guardar cambios físicos en disco
+% Uso: Query q = new Query("api_guardar_cambios");
+% ----------------------------------------------------
+api_guardar_cambios :- guardar_hechos_en_disco.

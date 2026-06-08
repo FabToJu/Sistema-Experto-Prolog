@@ -1,11 +1,4 @@
-:- consult('hechos.pl'). 
-
-:- dynamic borrado_logico/1.
-
-% --- REGLA: borrado Lógico ---
-cancion_activa(ID) :- 
-    cancion(ID, _, _, _, _),
-    not(borrado_logico(ID)).
+:- consult('../estado/sesion.pl').
 
 % ====================================================
 %  CLASIFICACIÓN DE ENERGÍA

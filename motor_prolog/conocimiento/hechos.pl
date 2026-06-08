@@ -1,3 +1,5 @@
+:- dynamic cancion/5.
+
 % ==================== HECHOS ====================
 % Base de conocimiento de canciones disponibles.
 % Formato: cancion(ID, Titulo, Artista, [Generos], Idioma).
