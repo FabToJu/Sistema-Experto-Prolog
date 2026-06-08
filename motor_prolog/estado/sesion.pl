@@ -22,24 +22,26 @@ cancion_activa(ID) :-
 eliminar_logica(ID) :-
     assertz(borrado_logico(ID)).
 
-restaurar_logica(ID) :-
+restaurar_cancion(ID) :-
     retractall(borrado_logico(ID)).
 
 % --- Agregar Hechos Físicos (En Memoria) ---
 agregar_cancion(ID, Titulo, Artista, Generos, Idioma) :-
-    assertz(cancion(ID, Titulo, Artista, Generos, Idioma)).
+    assertz(cancion(ID, Titulo, Artista, Generos, Idioma)),
+    append('../conocimiento/hechos.pl'),
+    nl,
+    writeq(cancion(ID, Titulo, Artista, Generos, Idioma)),
+    write('.'), told.
+    
 
 % --- Borrado Físico (En Memoria) ---
 % Elimina completamente el hecho de la memoria temporal.
 eliminar_fisica(ID) :-
-    retractall(cancion(ID, _, _, _, _)).
+    retractall(cancion(ID, _, _, _, _)),
+    restaurar_cancion(ID).
 
-% (Opcional) --- Guardar Cambios en Disco ---
-% Sobrescribe hechos.pl con los hechos actuales en memoria.
-guardar_hechos_en_disco :-
+eliminar_fisica_archivo(ID) :-
+    retractall(cancion(ID, _, _, _, _)),
     tell('../conocimiento/hechos.pl'),
-    write('% ==================== HECHOS ===================='), nl,
-    write('% Archivo auto-generado por guardado fisico'), nl,
-    write(':- dynamic cancion/5.'), nl, nl,
     listing(cancion/5),
     told.

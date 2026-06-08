@@ -16,7 +16,7 @@ apta_para_actividad(ID, estudiar) :-
     (inferir_energia(ID, baja) ; inferir_energia(ID, media)),
     (cancion(ID, _, _, _, instrumental) ; inferir_emocion(ID, relajado)).
 
-% 3. Fiesta: Energía alta, y debe transmitir emociones posias.
+% 3. Fiesta: Energía alta, y debe transmitir emociones positias.
 % Filtramos el Rock pesado triste o baladas.
 apta_para_actividad(ID, fiesta) :- 
     cancion_activa(ID),
