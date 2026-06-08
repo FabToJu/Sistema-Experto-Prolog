@@ -28,7 +28,7 @@ restaurar_cancion(ID) :-
 % --- Agregar Hechos Físicos (En Memoria) ---
 agregar_cancion(ID, Titulo, Artista, Generos, Idioma) :-
     assertz(cancion(ID, Titulo, Artista, Generos, Idioma)),
-    append('../conocimiento/hechos.pl'),
+    append('motor_prolog/conocimiento/hechos.pl'),
     nl,
     writeq(cancion(ID, Titulo, Artista, Generos, Idioma)),
     write('.'), told.
@@ -42,6 +42,6 @@ eliminar_fisica(ID) :-
 
 eliminar_fisica_archivo(ID) :-
     retractall(cancion(ID, _, _, _, _)),
-    tell('../conocimiento/hechos.pl'),
+    tell('motor_prolog/conocimiento/hechos.pl'),
     listing(cancion/5),
     told.
