@@ -32,7 +32,7 @@ buscar_por_emocion(Emocion, Titulo, Artista, GenerosStr) :-
 % ----------------------------------------------------
 buscar_por_idioma_energia(Energia, Idioma, Titulo, Artista, GenerosStr) :-
     cancion_activa(ID),
-    inferir_energia(ID, Energia),
+    (Energia == cualquiera ; inferir_energia(ID, Energia)),
     compatible_idioma(ID, Idioma),
     cancion(ID, Titulo, Artista, Generos, _),
     atomics_to_string(Generos, ', ', GenerosStr).
@@ -58,3 +58,19 @@ api_eliminar_cancion(ID, archivo) :- eliminar_fisica_archivo(ID).
 % Uso: Query q = new Query("api_restaurar_cancion('c_01')");
 % ----------------------------------------------------
 api_restaurar_cancion(ID) :- restaurar_cancion(ID).
+
+% ----------------------------------------------------
+% ENDPOINT 7: Obtener todas las canciones activas
+% ----------------------------------------------------
+api_obtener_todas_canciones(ID, Titulo, Artista, GenerosStr, Idioma) :-
+    cancion_activa(ID),
+    cancion(ID, Titulo, Artista, Generos, Idioma),
+    atomics_to_string(Generos, ', ', GenerosStr).
+
+% ----------------------------------------------------
+% ENDPOINT 8: Consultar canción
+% ----------------------------------------------------
+api_consultar(ID, Titulo, Artista, GenerosStr, Idioma) :-
+    cancion_activa(ID),
+    cancion(ID, Titulo, Artista, Generos, Idioma),
+    atomics_to_string(Generos, ', ', GenerosStr).
