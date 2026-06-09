@@ -1,3 +1,10 @@
+referencia/
+*.md
+!README.md
+.vscode/
+nbproject/
+bin/
+*.class
 build/
 nbproject/private/
 nbproject/build-impl.xml
