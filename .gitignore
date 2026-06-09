@@ -3,3 +3,5 @@ referencia/
 !README.md
 .vscode/
 nbproject/
+bin/
+*.class
