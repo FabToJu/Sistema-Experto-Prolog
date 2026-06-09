@@ -5,3 +5,9 @@ referencia/
 nbproject/
 bin/
 *.class
+build/
+nbproject/private/
+nbproject/build-impl.xml
+nbproject/genfiles.properties
+*.class
+*.zip
